@@ -8,7 +8,7 @@ import TransitionGroup from '../../components/TransitionGroup'
 class App extends Component {
   state = {
     ready: false,
-    themeColor: '#9BCDFD',
+    themeColor: '#f9f9f9',
     navColor: '#2b2b2b',
     firstView: true,
     currentProject: null,

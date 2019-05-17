@@ -13,15 +13,7 @@ const Navigation = ({ navColor, themeColor }) => {
       >
         <img className="db" width={64} height={40} src={logo} alt="fail" />
       </header>
-      {/* <NavLink
-        className="nav-link nav-link--home not-mobile"
-        activeClassName="nav-link--active"
-        to="/"
-      >
-        <span data-label="HOME">
-          <span style={textStyle}>HOME</span>
-        </span>
-      </NavLink> */}
+      
       <Link className="nav-link nav-link--home not-mobile" to="/" exact>
         <img src={logo} alt="fail" />
       </Link>
@@ -34,15 +26,7 @@ const Navigation = ({ navColor, themeColor }) => {
           <span style={textStyle}>ABOUT</span>
         </span>
       </NavLink>
-      {/* <NavLink
-        className="nav-link nav-link--process not-mobile"
-        activeClassName="nav-link--active"
-        to="/process"
-      >
-        <span data-label="PROCESS">
-          <span style={textStyle}>PROCESS</span>
-        </span>
-      </NavLink> */}
+      
 
       <NavLink
         className="nav-link nav-link--contact not-mobile"
