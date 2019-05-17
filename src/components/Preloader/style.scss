@@ -1,0 +1,30 @@
+/* -----
+Preloader
+----- */
+
+.tagline {
+  width: 100%;
+  height: 100%;
+  //max-width: 300px;
+  @include center-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  @media (max-width: 700px) {
+    max-width: 200px;
+  }
+
+  @media (max-width: 600px) {
+    max-width: 160px;
+  }
+
+  //   &__cta {
+  //     font-size: 1.5rem;
+  //     line-height: 1.5;
+  //     -webkit-text-fill-color: transparent;
+  //     -webkit-text-stroke-width: 0.5px;
+  //     -webkit-text-stroke-color: black;
+  //   }
+}

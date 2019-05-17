@@ -1,0 +1,60 @@
+#app {
+  width: 100%;
+  height: 100%;
+  transition: background-color 500ms $easeOutQuint;
+  @include noisey();
+}
+
+#content {
+  background-color: $off-white;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-msg {
+  font-size: 1.125rem;
+}
+
+.border-padding {
+  padding: 30px;
+
+  @media (max-width: 1000px) {
+    padding: 0;
+  }
+}
+
+.mobile {
+  display: none;
+  @media (max-width: 1000px) {
+    display: block;
+  }
+}
+
+.not-mobile {
+  display: none;
+  @media (min-width: 1000px) {
+    display: block;
+  }
+}
+
+.mobile-gate {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &__bio {
+    p {
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+  }
+
+  &__link {
+    font-size: 1.563rem;
+  }
+
+  &__msg {
+    font-size: 1.438rem;
+  }
+}
