@@ -9,7 +9,7 @@
 //http://localhost/api/wp-json/wp/v2/projects/
 
 export default function fetchContent() {
-  return fetch('https://api-cameronashlyn.com/wp-json/wp/v2/pages')
+  return fetch("https://api-cameronashlyn.com/wp-json/wp/v2/pages")
     .then(blob => blob.json())
     .then(json =>
       json.reduce(
@@ -18,11 +18,11 @@ export default function fetchContent() {
           [page.slug]: {
             title: page.title.rendered,
             slug: page.slug,
-            ...page.acf,
-          },
+            ...page.acf
+          }
         }),
-        {},
-      ),
+        {}
+      )
     )
     .then(pages =>
       fetchProjects(pages.home.projects).then(projects => ({
@@ -30,11 +30,11 @@ export default function fetchContent() {
         ...projects.reduce(
           (res, project) => ({
             ...res,
-            [project.slug]: project,
+            [project.slug]: project
           }),
-          {},
-        ),
-      })),
+          {}
+        )
+      }))
     )
     .then(data => ({
       ...data,
@@ -42,22 +42,22 @@ export default function fetchContent() {
         ...data.home,
         projects: data.home.projects.map(id => {
           const key = Object.keys(data).find(
-            key => data[key].projectId && data[key].projectId === id,
-          )
-          return data[key]
-        }),
-      },
-    }))
+            key => data[key].projectId && data[key].projectId === id
+          );
+          return data[key];
+        })
+      }
+    }));
 }
 
 function fetchProjects(ids) {
-  return Promise.all(ids.map(fetchSingleProject)).then(cleanProjects)
+  return Promise.all(ids.map(fetchSingleProject)).then(cleanProjects);
 }
 
 function fetchSingleProject(id) {
   return fetch(
-    `https://api-cameronashlyn.com/wp-json/wp/v2/projects/${id}`,
-  ).then(blob => blob.json())
+    `https://api-cameronashlyn.com/wp-json/wp/v2/projects/${id}`
+  ).then(blob => blob.json());
 }
 
 function cleanProjects(projects) {
@@ -66,6 +66,6 @@ function cleanProjects(projects) {
     projectId: project.id,
     slug: project.slug,
     nextProject: projects[i === projects.length - 1 ? 0 : i + 1],
-    ...project.acf,
-  }))
+    ...project.acf
+  }));
 }

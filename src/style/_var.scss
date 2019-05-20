@@ -2,7 +2,7 @@
 Path
 ----- */
 
-$base-fonts: '../assets/fonts/';
+$base-fonts: "../assets/fonts/";
 
 /* -----
 Colors
@@ -43,11 +43,11 @@ $pink-bright: #ffa9d6;
 /* -----
 Font Family
 ----- */
-$helvetica: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue',
-  Helvetica, Arial, 'Lucida Grande', sans-serif;
-$nav-font: 'Apercu', $helvetica;
-$font: 'Fortescue Regular', serif;
-$base-font: 'Apercu Light', sans-serif;
+$helvetica: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+  Helvetica, Arial, "Lucida Grande", sans-serif;
+$nav-font: "Apercu", $helvetica;
+$font: "Fortescue Regular", serif;
+$base-font: "Apercu Light", sans-serif;
 
 /* -----
 Font Weight

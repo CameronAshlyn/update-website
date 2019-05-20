@@ -1,63 +1,63 @@
-import React, { Component } from 'react'
-import { matchPath } from 'react-router-dom'
-import Preloader from '../../components/Preloader'
-import Navigation from '../../components/Navigation'
-import Overlay from '../../components/Overlay'
-import TransitionGroup from '../../components/TransitionGroup'
+import React, { Component } from "react";
+import { matchPath } from "react-router-dom";
+import Preloader from "../../components/Preloader";
+import Navigation from "../../components/Navigation";
+import Overlay from "../../components/Overlay";
+import TransitionGroup from "../../components/TransitionGroup";
 
 class App extends Component {
   state = {
     ready: false,
-    themeColor: '#f9f9f9',
-    navColor: '#2b2b2b',
+    themeColor: "#f9f9f9",
+    navColor: "#2b2b2b",
     firstView: true,
     currentProject: null,
-    data: {},
-  }
+    data: {}
+  };
 
   static defaultProps = {
     windowWidth: 970,
-    windowHeight: 560,
-  }
+    windowHeight: 560
+  };
 
   componentDidUpdate(prevProps, prevState) {
-    const { pathname } = this.props.location
-    const { data } = this.state
+    const { pathname } = this.props.location;
+    const { data } = this.state;
 
     if (prevProps.location.pathname !== pathname || prevState.data !== data) {
-      this.setThemeColor(pathname)
+      this.setThemeColor(pathname);
     }
   }
 
-  matchPath = path => matchPath(this.props.location.pathname, path)
+  matchPath = path => matchPath(this.props.location.pathname, path);
 
-  onReady = data => this.setState({ data, ready: true })
+  onReady = data => this.setState({ data, ready: true });
 
   setThemeColor = pathname => {
     this.setState(state => ({
       themeColor: this.getKey(pathname)
         .map(key => state.data[key])
         .map(obj =>
-          obj.hasOwnProperty('theme_color')
+          obj.hasOwnProperty("theme_color")
             ? obj.theme_color
-            : obj.hasOwnProperty('case_study')
+            : obj.hasOwnProperty("case_study")
             ? obj.case_study.theme_color
-            : '#0010CB',
-        )[0],
-    }))
-  }
+            : "#0010CB"
+        )[0]
+    }));
+  };
 
-  onFirstView = () => this.setState({ firstView: false })
+  onFirstView = () => this.setState({ firstView: false });
 
-  setNavColor = navColor => this.setState({ navColor })
+  setNavColor = navColor => this.setState({ navColor });
 
-  setCurrentProject = currentProject => this.setState({ currentProject })
+  setCurrentProject = currentProject => this.setState({ currentProject });
 
   getKey = pathname => {
     return [pathname]
-      .map(p => p.split('/'))
-      .map(arr => arr[arr.length - 1] || 'home')
-  }
+      .map(p => p.split("/"))
+      .map(arr => arr[arr.length - 1] || "home");
+  };
 
   renderPreloader = () => {
     return (
@@ -67,11 +67,11 @@ class App extends Component {
         minDisplayTime={500}
         {...this.props}
       />
-    )
-  }
+    );
+  };
 
   renderRoute = () => {
-    const key = this.getKey(this.props.location.pathname)[0]
+    const key = this.getKey(this.props.location.pathname)[0];
 
     return this.props.routes
       .filter(({ path }) => this.matchPath(path))
@@ -87,8 +87,8 @@ class App extends Component {
           onFirstView={this.onFirstView}
           overlay={this.overlay}
         />
-      ))
-  }
+      ));
+  };
 
   render() {
     const {
@@ -96,17 +96,17 @@ class App extends Component {
       themeColor,
       navColor,
       firstView,
-      currentProject,
-    } = this.state
-    const { windowHeight, windowWidth, pageX, pageY } = this.props
-    const renderContent = this[ready ? 'renderRoute' : 'renderPreloader']
+      currentProject
+    } = this.state;
+    const { windowHeight, windowWidth, pageX, pageY } = this.props;
+    const renderContent = this[ready ? "renderRoute" : "renderPreloader"];
 
     const transitionGroupProps = {
-      id: 'content',
-      component: 'div',
-      'aria-live': 'polite',
-      transitionMode: 'simultaneous',
-    }
+      id: "content",
+      component: "div",
+      "aria-live": "polite",
+      transitionMode: "simultaneous"
+    };
 
     return (
       <div
@@ -136,7 +136,7 @@ class App extends Component {
             <div
               className="mobile-gate__bio mw7 mb5"
               dangerouslySetInnerHTML={{
-                __html: this.state.data.about.content,
+                __html: this.state.data.about.content
               }}
             />
             <div className="mobile-gate__contact mb5">
@@ -168,8 +168,8 @@ class App extends Component {
             <div className="mobile-gate__msg bg-white">
               <span role="img" aria-label="Dark moon emoji">
                 🌚
-              </span>{' '}
-              full mobile site coming soon{' '}
+              </span>{" "}
+              full mobile site coming soon{" "}
               <span role="img" aria-label="Light moon emoji">
                 🌝
               </span>
@@ -177,8 +177,8 @@ class App extends Component {
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
