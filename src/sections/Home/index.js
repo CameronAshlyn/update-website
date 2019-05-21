@@ -6,6 +6,8 @@ import ProjectTile from "../../components/ProjectTile";
 
 import animate from "@jam3/gsap-promise";
 import { Expo } from "gsap";
+import cameron from "../../assets/images/cameron.jpg";
+
 
 class Home extends BaseComponent {
   tiles = [];
@@ -62,34 +64,53 @@ class Home extends BaseComponent {
     return (
       <Page id="Home" ref={e => (this.page = e)}>
         <div className="container" ref={e => (this.container = e)}>
-          <SmoothScroll
-            ref={e => (this.smooth = e)}
-            windowWidth={windowWidth}
-            windowHeight={windowHeight}
-          >
-            {scroll => (
-              <Fragment>
-                <div
-                  className="scroll-area"
-                  style={{
-                    transform: `translateY(${scroll.current}px) translateZ(0)`
-                  }}
-                >
-                  <ul className="project-tiles">
-                    {projects.map((project, i) => (
-                      <ProjectTile
-                        ref={e => (this.tiles[i] = e)}
-                        key={project.slug}
-                        project={project}
-                        ease={this.getEase(i)}
-                        {...scroll}
-                      />
-                    ))}
-                  </ul>
-                </div>
-              </Fragment>
-            )}
-          </SmoothScroll>
+          <aside className="profile-area fix top left z10 fl w-third pa2" >
+
+            <div className="profile-area--thumbnail">
+              <img className="cameron" src={cameron} alt="cameron" />
+
+            </div>
+            <div className="profile-area--headline">
+
+            </div>
+
+          </aside>
+
+          <section className="project-area fl w-two-thirds pa2">
+            <SmoothScroll
+              ref={e => (this.smooth = e)}
+              windowWidth={windowWidth}
+              windowHeight={windowHeight}
+            >
+              {scroll => (
+                <Fragment>
+                  <div
+                    className="scroll-area"
+                    style={{
+                      transform: `translateY(${scroll.current}px) translateZ(0)`
+                    }}
+                  >
+                    <ul className="project-tiles">
+                      {projects.map((project, i) => (
+                        <ProjectTile
+                          ref={e => (this.tiles[i] = e)}
+                          key={project.slug}
+                          project={project}
+                          ease={this.getEase(i)}
+                          {...scroll}
+                        />
+                      ))}
+                    </ul>
+                  </div>
+                </Fragment>
+              )}
+            </SmoothScroll>
+
+          </section>
+
+
+
+
         </div>
       </Page>
     );
