@@ -7,6 +7,7 @@ import ProjectTile from "../../components/ProjectTile";
 import animate from "@jam3/gsap-promise";
 import { Expo } from "gsap";
 import cameron from "../../assets/images/cameron.jpg";
+import SocialMenu from "../../components/SocialMenu/";
 
 
 class Home extends BaseComponent {
@@ -64,17 +65,22 @@ class Home extends BaseComponent {
     return (
       <Page id="Home" ref={e => (this.page = e)}>
         <div className="container" ref={e => (this.container = e)}>
-          <aside className="profile-area fix top left z10 fl w-third pa2" >
+          <section className="profile-area fix top left z10 fl w-third pa2">
+            <aside className="profile  " >
 
-            <div className="profile-area--thumbnail">
-              <img className="cameron" src={cameron} alt="cameron" />
+              <div className="profile profile--thumbnail">
+                <img className="cameron" src={cameron} alt="cameron" />
 
-            </div>
-            <div className="profile-area--headline">
+              </div>
+              <div className=" profile profile--headline">
+                <h1>Cameron Taylor</h1>
+                <p>Exploring design as a tool to enhance our humanity</p>
+                <SocialMenu />
 
-            </div>
+              </div>
 
-          </aside>
+            </aside>
+          </section>
 
           <section className="project-area fl w-two-thirds pa2">
             <SmoothScroll
