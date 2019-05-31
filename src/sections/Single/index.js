@@ -1,3 +1,4 @@
+
 import React from "react";
 import BaseComponent from "../../components/BaseComponent";
 import Page from "../../components/Page";
@@ -5,6 +6,7 @@ import Slider from "../../components/Slider";
 import Slide from "../../components/Slide";
 import animate from "@jam3/gsap-promise";
 import { Expo } from "gsap";
+import SmoothScroll from "../../components/SmoothScroll";
 
 class Single extends BaseComponent {
   slides = [];
@@ -101,34 +103,147 @@ class Single extends BaseComponent {
 
   render() {
     const { slides } = this.props.case_study;
+    const { windowWidth, windowHeight } = this.props
     return (
       <Page id="Single" ref={e => (this.page = e)}>
-        <Slider
-          ref={e => (this.slider = e)}
-          {...this.props}
-          finalIndex={slides.length - 1}
-          requestNextProject={this.requestNextProject}
-          nextProjectRequested={this.nextProjectRequested}
-        >
-          {({ currentIndex }) =>
-            slides.map((slide, i) => (
-              <article
-                className="slide"
-                key={i}
+        <div className="single-area">
+          <SmoothScroll
+            ref={e => (this.smooth = e)}
+            windowWidth={windowWidth}
+            windowHeight={windowHeight}>
+            {scroll => (
+              <div className="scroll-area"
                 style={{
-                  transform: `translate3d(0, ${
-                    i === currentIndex ? 0 : i < currentIndex ? -100 : 100
-                  }%, 0)`
-                }}
-              >
-                {this.renderSlideLayout(slide, i, currentIndex)}
-              </article>
-            ))
-          }
-        </Slider>
+                  transform: `translate3d(0, ${scroll.current}px, 0)`,
+                }}>
+
+                <Slider
+                  ref={e => (this.slider = e)}
+                  {...this.props}
+                  finalIndex={slides.length - 1}
+                  requestNextProject={this.requestNextProject}
+                  nextProjectRequested={this.nextProjectRequested}
+                >
+                  {({ currentIndex }) =>
+                    slides.map((slide, i) => (
+
+
+                      <div
+                        className="slide"
+                        key={i}
+
+                      >
+                        {this.renderSlideLayout(slide, i, currentIndex)}
+                      </div>
+
+                    ))
+                  }
+                </Slider>
+              </div>
+            )}
+
+          </SmoothScroll>
+        </div>
       </Page>
     );
   }
 }
 
 export default Single;
+
+
+
+/*
+import React from 'react'
+import BaseComponent from '../../components/BaseComponent'
+import Page from '../../components/Page'
+import SmoothScroll from '../../components/SmoothScroll'
+import Slide from '../../components/Slide'
+import animate from '@jam3/gsap-promise'
+import { Expo } from 'gsap'
+
+class Single extends BaseComponent {
+  state = {
+    ready: false,
+
+
+  }
+  slides = []
+
+  animateIn() {
+    this.props.setNavColor('#2B2B2B')
+    return animate.to(this.page.el, 1, {
+      autoAlpha: 1,
+      delay: 0.25,
+    })
+  }
+
+  animateOut() {
+    return animate.to(this.page.el, 1, {
+      autoAlpha: 0,
+      ease: Expo.easeOut,
+    })
+  }
+
+  renderSlideLayout(slide, slideIndex, currentIndex) {
+    switch (slide.acf_fc_layout) {
+      case 'text':
+        return (
+          <Slide.Text {...slide} ref={e => (this.slides[slideIndex] = e)} />
+        )
+      case 'image':
+        return (
+          <Slide.Image {...slide} ref={e => (this.slides[slideIndex] = e)} />
+        )
+      case 'video':
+        return (
+          <Slide.Video
+            {...slide}
+            ref={e => (this.slides[slideIndex] = e)}
+            paused={slideIndex === currentIndex ? false : true}
+          />
+        )
+      case 'split':
+        return (
+          <Slide.Split {...slide} ref={e => (this.slides[slideIndex] = e)} />
+        )
+      default:
+        return null
+    }
+  }
+
+  render() {
+    const { slides } = this.props.case_study
+    const { currentIndex } = this.state
+    const { windowWidth, windowHeight } = this.props
+    return (
+      <Page id="Single" ref={e => (this.page = e)}>
+        <SmoothScroll windowWidth={windowWidth} windowHeight={windowHeight}>
+          {scroll => (
+            <div
+              style={{
+                transform: `translate3d(0, ${scroll.current}px, 0)`,
+              }}
+            >
+
+              {slides.map((slide, i) => (
+                <article
+                  className="slide"
+                  key={i}
+
+                >
+                  {this.renderSlideLayout(slide, i, currentIndex)}
+                </article>
+              ))
+              }
+
+            </div>
+          )}
+        </SmoothScroll>
+      </Page>
+    )
+  }
+}
+
+export default Single
+*/
