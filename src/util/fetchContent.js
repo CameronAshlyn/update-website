@@ -9,7 +9,7 @@
 //http://localhost/api/wp-json/wp/v2/projects/
 
 export default function fetchContent() {
-  return fetch("https://api-cameronashlyn.com/wp-json/wp/v2/pages")
+  return fetch("http://localhost/api/wp-json/wp/v2/pages")
     .then(blob => blob.json())
     .then(json =>
       json.reduce(
@@ -56,7 +56,7 @@ function fetchProjects(ids) {
 
 function fetchSingleProject(id) {
   return fetch(
-    `https://api-cameronashlyn.com/wp-json/wp/v2/projects/${id}`
+    `http://localhost/api/wp-json/wp/v2/projects/${id}`
   ).then(blob => blob.json());
 }
 

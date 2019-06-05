@@ -11,7 +11,7 @@
 }
 .profile-area{
   border-right: 1px solid #E6EBEF;
-  flex: 1;
+  flex: 1.5;
   width: 100%;
   height: 100%;
   //background-color: orchid
@@ -53,11 +53,12 @@
   width: 15rem;
 }
 
-.project-area{
-  //background-color: lime;
+.project-area {
+  //background-color: red;
   flex: 3;
-
 }
+
+
 
 .scroll-area {
   position: relative;
@@ -65,11 +66,13 @@
   will-change: transform;
 }
 
-.project-tiles {
+.project-cards {
   padding: 0 1.875rem;;
   margin-top: 3.75rem;
   display: flex;
   flex-wrap: wrap;
+  //background-color: lime;
+  
 
   @media (max-width: 700px) {
     flex-direction: column;

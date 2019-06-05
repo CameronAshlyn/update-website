@@ -28,9 +28,15 @@ class Image extends Component {
         style={{
           opacity: loaded ? 1 : 0,
           backgroundColor: colors.background,
-          backgroundImage: `url(${image.url})`
+
         }}
-      />
+      >
+        <img
+
+          src={image.url}
+          alt={image.alt}
+        />
+      </div>
     );
   }
 }

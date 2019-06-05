@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import BaseComponent from "../../components/BaseComponent";
 import Page from "../../components/Page";
 import SmoothScroll from "../../components/SmoothScroll";
-import ProjectTile from "../../components/ProjectTile";
+import ProjectCard from "../../components/ProjectCard";
 
 import animate from "@jam3/gsap-promise";
 import { Expo } from "gsap";
@@ -11,14 +11,14 @@ import SocialMenu from "../../components/SocialMenu/";
 
 
 class Home extends BaseComponent {
-  tiles = [];
+  cards = [];
 
   animateIn() {
     this.props.setNavColor("#2B2B2B");
     return Promise.all([
       animate.set(this.page.el, { autoAlpha: 1 }),
       animate.staggerFromTo(
-        this.tiles.map(tile => tile.el),
+        this.cards.map(card => card.el),
         1.25,
         {
           autoAlpha: 0,
@@ -34,7 +34,7 @@ class Home extends BaseComponent {
         0.075
       )
     ]).then(() => {
-      this.tiles.forEach(tile => tile.loadImage());
+      this.cards.forEach(card => card.loadImage());
     });
   }
 
@@ -83,6 +83,7 @@ class Home extends BaseComponent {
           </section>
 
           <section className="project-area fl w-two-thirds pa2">
+
             <SmoothScroll
               ref={e => (this.smooth = e)}
               windowWidth={windowWidth}
@@ -96,21 +97,22 @@ class Home extends BaseComponent {
                       transform: `translateY(${scroll.current}px) translateZ(0)`
                     }}
                   >
-                    <ul className="project-tiles">
+                    <div className="project-cards">
                       {projects.map((project, i) => (
-                        <ProjectTile
-                          ref={e => (this.tiles[i] = e)}
+                        <ProjectCard
+                          ref={e => (this.cards[i] = e)}
                           key={project.slug}
                           project={project}
                           ease={this.getEase(i)}
                           {...scroll}
                         />
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </Fragment>
               )}
             </SmoothScroll>
+
 
           </section>
 
