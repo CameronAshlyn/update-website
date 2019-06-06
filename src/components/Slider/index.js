@@ -30,11 +30,11 @@ class Slider extends Component {
 
 
   setCurrentSlideNavColor() {
-    const { slides } = this.props.case_study;
+    const { blocks } = this.props.case_study;
     const { currentIndex } = this.state;
 
     this.props.setNavColor(
-      slides[currentIndex].colors.navigation.toUpperCase()
+      blocks[currentIndex].colors.navigation.toUpperCase()
     );
   }
 

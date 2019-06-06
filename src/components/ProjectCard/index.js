@@ -58,9 +58,8 @@ class ProjectCard extends Component {
       >
 
         <Link className="project-card__content" to={`/work/${project.slug}`}>
-          <div className="project-card__card flex flex-column flex-row-ns">
+          <div className="project-card__box flex flex-column flex-row-ns">
             <div className="project-card__media pr3-ns mb4 mb0-ns w-100 w-40-ns"
-
 
             >
               <img
@@ -71,7 +70,7 @@ class ProjectCard extends Component {
 
               />
             </div>
-            <div className="project-card__summary w-100 w-60-ns pl3-ns">
+            <div className="project-card__excerpt w-100 w-60-ns pl3-ns">
               <h1
                 className="project-card__header f3 fw1  mt0 lh-title"
                 dangerouslySetInnerHTML={{ __html: project.card.header }}
@@ -80,7 +79,7 @@ class ProjectCard extends Component {
 
               </h1>
               <p
-                className="project-card__excerpt f6 f5-l lh-copy "
+                className="project-card__summary f6 f5-l lh-copy "
                 dangerouslySetInnerHTML={{ __html: project.card.summary }}></p>
             </div>
             <div
@@ -94,9 +93,7 @@ class ProjectCard extends Component {
           <h2 className="project-card__title">{project.title}</h2>
         </Link>
 
-        <div className="project-card__divider">
-          <hr></hr>
-        </div>
+
 
       </article>
     );
@@ -104,3 +101,18 @@ class ProjectCard extends Component {
 }
 
 export default ProjectCard;
+
+/*
+<div className="project-card__media pr3-ns mb4 mb0-ns w-100 w-40-ns"
+
+
+            >
+              <img
+                className="project-card__img db"
+                src={project.card.thumbnail.url}
+                alt={project.card.thumbnail.alt}
+
+
+              />
+            </div>
+*/

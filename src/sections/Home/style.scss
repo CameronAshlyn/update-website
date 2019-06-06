@@ -19,7 +19,6 @@
 }
 
 .profile {
-  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,13 +63,15 @@
   position: relative;
   padding-top: 1.875rem;
   will-change: transform;
+  //background-color: aqua;
 }
 
 .project-cards {
-  padding: 0 1.875rem;;
+  padding: 0 10.875rem 0 1.875rem;
   margin-top: 3.75rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  //flex-wrap: wrap;
   //background-color: lime;
   
 

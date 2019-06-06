@@ -65,7 +65,7 @@ class Home extends BaseComponent {
     return (
       <Page id="Home" ref={e => (this.page = e)}>
         <div className="container" ref={e => (this.container = e)}>
-          <section className="profile-area fix top left z10 fl w-third pa2">
+          <section className="profile-area fix top left z10 ">
             <aside className="profile  " >
 
               <div className="profile profile--thumbnail">
@@ -82,7 +82,7 @@ class Home extends BaseComponent {
             </aside>
           </section>
 
-          <section className="project-area fl w-two-thirds pa2">
+          <section className="project-area">
 
             <SmoothScroll
               ref={e => (this.smooth = e)}
@@ -108,6 +108,7 @@ class Home extends BaseComponent {
                         />
                       ))}
                     </div>
+
                   </div>
                 </Fragment>
               )}

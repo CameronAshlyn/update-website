@@ -9,7 +9,7 @@ import { Expo } from "gsap";
 import SmoothScroll from "../../components/SmoothScroll";
 
 class Single extends BaseComponent {
-  slides = [];
+  blocks = [];
   nextProjectRequested = false;
 
   animateIn() {
@@ -30,7 +30,7 @@ class Single extends BaseComponent {
       .then(this.slider.init)
       .then(() => firstView && onFirstView())
       .then(() => {
-        typeof this.slides[0].play === "function" && this.slides[0].play();
+        typeof this.blocks[0].play === "function" && this.blocks[0].play();
       });
   }
 
@@ -48,27 +48,27 @@ class Single extends BaseComponent {
     }
   }
 
-  renderSlideLayout(slide, slideIndex, currentIndex) {
-    switch (slide.acf_fc_layout) {
+  renderBlockLayout(block, blockIndex, currentIndex) {
+    switch (block.acf_fc_layout) {
       case "text":
         return (
-          <Slide.Text {...slide} ref={e => (this.slides[slideIndex] = e)} />
+          <Slide.Text {...block} ref={e => (this.blocks[blockIndex] = e)} />
         );
       case "image":
         return (
-          <Slide.Image {...slide} ref={e => (this.slides[slideIndex] = e)} />
+          <Slide.Image {...block} ref={e => (this.blocks[blockIndex] = e)} />
         );
       case "video":
         return (
           <Slide.Video
-            {...slide}
-            ref={e => (this.slides[slideIndex] = e)}
-            paused={slideIndex === currentIndex ? false : true}
+            {...block}
+            ref={e => (this.blocks[blockIndex] = e)}
+            paused={blockIndex === currentIndex ? false : true}
           />
         );
       case "split":
         return (
-          <Slide.Split {...slide} ref={e => (this.slides[slideIndex] = e)} />
+          <Slide.Split {...block} ref={e => (this.blocks[blockIndex] = e)} />
         );
       default:
         return null;
@@ -78,7 +78,7 @@ class Single extends BaseComponent {
   loadAssets = () => {
     const { overlay } = this.props;
     return new Promise((resolve, reject) => {
-      const assets = this.slides.filter(this.slideHasMedia);
+      const assets = this.blocks.filter(this.blockHasMedia);
       const total = assets.length;
       const last = total - 1;
       let count = 0;
@@ -94,7 +94,7 @@ class Single extends BaseComponent {
     });
   };
 
-  slideHasMedia = slide => typeof slide.load === "function";
+  blockHasMedia = block => typeof block.load === "function";
 
   requestNextProject = () => {
     this.nextProjectRequested = true;
@@ -102,7 +102,7 @@ class Single extends BaseComponent {
   };
 
   render() {
-    const { slides } = this.props.case_study;
+    const { blocks } = this.props.case_study;
     const { windowWidth, windowHeight } = this.props
     return (
       <Page id="Single" ref={e => (this.page = e)}>
@@ -120,20 +120,20 @@ class Single extends BaseComponent {
                 <Slider
                   ref={e => (this.slider = e)}
                   {...this.props}
-                  finalIndex={slides.length - 1}
+                  finalIndex={blocks.length - 1}
                   requestNextProject={this.requestNextProject}
                   nextProjectRequested={this.nextProjectRequested}
                 >
                   {({ currentIndex }) =>
-                    slides.map((slide, i) => (
+                    blocks.map((block, i) => (
 
 
                       <div
-                        className="slide"
+                        className="block"
                         key={i}
 
                       >
-                        {this.renderSlideLayout(slide, i, currentIndex)}
+                        {this.renderBlockLayout(block, i, currentIndex)}
                       </div>
 
                     ))
