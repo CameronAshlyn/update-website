@@ -64,7 +64,7 @@ class Home extends BaseComponent {
     const { projects, windowWidth, windowHeight } = this.props;
     return (
       <Page id="Home" ref={e => (this.page = e)}>
-        <div className="container" ref={e => (this.container = e)}>
+        <div className="main" ref={e => (this.main = e)}>
           <section className="profile-area fix top left z10 ">
             <aside className="profile  " >
 

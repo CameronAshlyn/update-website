@@ -43,7 +43,7 @@
   
   }
 
-  &__header {
+  &__headline {
     margin: 10px 0 10px 0;
     
   
@@ -82,11 +82,11 @@
   }
 
 
-  &:nth-child(1) {
-    .project-card {
-      padding-bottom: 100%;
-    }
-  }
+  // &:nth-child(1) {
+  //   .project-card {
+  //     padding-bottom: 100%;
+  //   }
+  // }
 
   &:hover,
   &.active {

@@ -72,8 +72,8 @@ class ProjectCard extends Component {
             </div>
             <div className="project-card__excerpt w-100 w-60-ns pl3-ns">
               <h1
-                className="project-card__header f3 fw1  mt0 lh-title"
-                dangerouslySetInnerHTML={{ __html: project.card.header }}
+                className="project-card__headline f3 fw1  mt0 lh-title"
+                dangerouslySetInnerHTML={{ __html: project.card.headline }}
 
               >
 
