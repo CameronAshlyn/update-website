@@ -17,13 +17,7 @@ class Template extends Component {
 
 
 
-  componentDidUpdate(prevProps, prevState) {
-    const { currentIndex } = this.state;
 
-    if (currentIndex !== prevState.currentIndex) {
-      this.handleSlideChange();
-    }
-  }
 
   show = () => animate.set(this.el, { autoAlpha: 1 });
 
@@ -38,15 +32,7 @@ class Template extends Component {
     );
   }
 
-  handleSlideChange() {
-    this.setCurrentSlideNavColor();
 
-    this.animating = true;
-
-    timeout(400).then(() => {
-      this.animating = false;
-    });
-  }
 
   render() {
     return (

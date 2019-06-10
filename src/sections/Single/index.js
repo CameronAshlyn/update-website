@@ -24,10 +24,10 @@ class Single extends BaseComponent {
       .set(this.page.el, { autoAlpha: 1 })
       .then(() => setCurrentProject(title))
       .then(overlay.animateIn)
-      .then(this.slider.show)
+      .then(this.template.show)
       .then(this.loadAssets)
       .then(overlay.animateOut)
-      .then(this.slider.init)
+
       .then(() => firstView && onFirstView())
       .then(() => {
         typeof this.blocks[0].play === "function" && this.blocks[0].play();
@@ -118,7 +118,7 @@ class Single extends BaseComponent {
                 }}>
 
                 <Template
-                  ref={e => (this.slider = e)}
+                  ref={e => (this.template = e)}
                   {...this.props}
                   finalIndex={blocks.length - 1}
                   requestNextProject={this.requestNextProject}
