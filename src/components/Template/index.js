@@ -50,9 +50,9 @@ class Template extends Component {
 
   render() {
     return (
-      <section className="template" ref={e => (this.el = e)}>
+      <div className="template" ref={e => (this.el = e)}>
         {this.props.children(this.state)}
-      </section>
+      </div>
     );
   }
 }
