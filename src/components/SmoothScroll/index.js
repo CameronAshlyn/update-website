@@ -62,9 +62,7 @@ class SmoothScroll extends Component {
     this.setState({ bounds: this.el.getBoundingClientRect() });
   }
 
-  scrollUp = () => {
-    this.setState({ target: 0 });
-  };
+
 
   render() {
     return (

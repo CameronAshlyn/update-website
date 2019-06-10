@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import timeout from "../../util/timeout";
 import animate from "@jam3/gsap-promise";
 
-class Slider extends Component {
+class Template extends Component {
   state = {
     currentIndex: 0
   };
@@ -50,11 +50,11 @@ class Slider extends Component {
 
   render() {
     return (
-      <section className="slider" ref={e => (this.el = e)}>
+      <section className="template" ref={e => (this.el = e)}>
         {this.props.children(this.state)}
       </section>
     );
   }
 }
 
-export default Slider;
+export default Template;

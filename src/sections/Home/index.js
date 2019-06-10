@@ -58,7 +58,7 @@ class Home extends BaseComponent {
     return easeMap[i % easeMap.length];
   };
 
-  scrollUp = () => this.smooth.scrollUp();
+
 
   render() {
     const { projects, windowWidth, windowHeight } = this.props;
