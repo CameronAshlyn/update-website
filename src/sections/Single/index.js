@@ -138,6 +138,8 @@ class Single extends BaseComponent {
                         <div
                           className="block"
                           key={i}
+                          {...block}
+
 
 
                         >
