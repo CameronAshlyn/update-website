@@ -81,11 +81,7 @@
   }
 
 
-  // &:nth-child(1) {
-  //   .project-card {
-  //     padding-bottom: 100%;
-  //   }
-  // }
+  
 
   &:hover,
   &.active {
@@ -99,6 +95,12 @@
     .project-card__lede {
       opacity: 1;
       transform: none;
+    }
+  }
+
+  &:nth-child(1) {
+    .project-card {
+      padding-bottom: 100%;
     }
   }
 }

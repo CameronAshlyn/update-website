@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import BaseComponent from "../../components/BaseComponent";
 import Page from "../../components/Page";
 import Template from "../../components/Template";
@@ -78,6 +79,8 @@ class Single extends BaseComponent {
     }
   }
 
+
+
   loadAssets = () => {
     const { overlay } = this.props;
     return new Promise((resolve, reject) => {
@@ -104,9 +107,13 @@ class Single extends BaseComponent {
     this.props.history.push(`/work/${this.props.nextProject.slug}`);
   };
 
+
+
   render() {
-    const { blocks } = this.props.case_study;
     const { windowWidth, windowHeight } = this.props
+    const { blocks } = this.props.case_study;
+
+
     return (
       <Page id="Single" ref={e => (this.page = e)}>
         <div className="container" ref={e => (this.container = e)}>
@@ -115,7 +122,7 @@ class Single extends BaseComponent {
             {scroll => (
               <div
                 style={{
-                  transform: `translate3d(0, ${scroll.current}px, 0)`,
+                  transform: `translateY(${scroll.current}px) translateZ(0)`,
                 }}
               >
 
@@ -124,7 +131,8 @@ class Single extends BaseComponent {
                   {...this.props}
                   finalIndex={blocks.length - 1}
                   requestNextProject={this.requestNextProject}
-                  nextProjectRequested={this.nextProjectRequested}
+                //nextProjectRequested={this.nextProjectRequested}
+
 
                 >
 
@@ -134,23 +142,52 @@ class Single extends BaseComponent {
                     blocks.map((block, i) => (
 
 
+
+
                       <div
                         className="block"
                         key={i}
+
+
                         {...block}
 
 
 
                       >
                         {this.renderBlockLayout(block, i, currentIndex)}
+
                       </div>
 
+
+
+
+
+
                     ))
+
                   }
+
+
+
                 </Template>
+                <div
+                  className="block block--next"
+
+                >
+                  <Link
+                    className="block__next"
+                    onClick={this.nextProjectRequested}
+                    to={`/work/${this.props.nextProject.slug}`}
+                  >
+                    Next Project
+                          </Link>
+                </div>
+
+
               </div>
 
             )}
+
 
           </SmoothScroll>
         </div>
