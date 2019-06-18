@@ -9,6 +9,8 @@ class Image extends Component {
     return new Promise((resolve, reject) => {
       const img = document.createElement("img");
       const src = this.props.image.url;
+      // need to add captions to images 
+      //const caption = this.props.image.caption;
 
       img.onload = () => {
         img.onload = null;
@@ -36,6 +38,9 @@ class Image extends Component {
           src={image.url}
           alt={image.alt}
         />
+
+
+
       </div>
     );
   }

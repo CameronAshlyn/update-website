@@ -97,13 +97,8 @@ class Overlay extends Component {
                 ),
                 firstView && (
                   <p className="overlay-msg white mb3 ttl" key="instruction">
-                    use your arrow keys to navigate{" "}
-                    <span role="img" aria-label="Up Arrow">
-                      ⬆️
-                    </span>
-                    <span role="img" aria-label="Down Arrow">
-                      ️️⬇️
-                    </span>
+                    this is a test for the overlay of the project
+
                   </p>
                 )
               ]}

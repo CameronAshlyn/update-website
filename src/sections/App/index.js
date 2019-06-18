@@ -41,8 +41,8 @@ class App extends Component {
           obj.hasOwnProperty("theme_color")
             ? obj.theme_color
             : obj.hasOwnProperty("case_study")
-            ? obj.case_study.theme_color
-            : "#0010CB"
+              ? obj.case_study.theme_color
+              : "#0010CB"
         )[0]
     }));
   };
