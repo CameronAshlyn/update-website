@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Text from "./Slide.Text";
-import Image from "./Slide.Image";
+import Text from "./Block.Text";
+import Image from "./Block.Image";
 
 class Split extends Component {
   load = () => {
@@ -10,22 +10,22 @@ class Split extends Component {
   };
 
   render() {
-    const { first_column, ...slide } = this.props;
+    const { first_column, ...block } = this.props;
     return (
       <div className="block block--split">
         <div className="block--split__column">
           {first_column === "image" ? (
-            <Image {...slide} ref={e => (this.image = e)} />
+            <Image {...block} ref={e => (this.image = e)} />
           ) : (
-            <Text {...slide} />
-          )}
+              <Text {...block} />
+            )}
         </div>
         <div className="block--split__column">
           {first_column === "image" ? (
-            <Text {...slide} />
+            <Text {...block} />
           ) : (
-            <Image {...slide} ref={e => (this.image = e)} />
-          )}
+              <Image {...block} ref={e => (this.image = e)} />
+            )}
         </div>
       </div>
     );

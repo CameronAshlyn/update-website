@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-//import vs from "virtual-scroll";
-import timeout from "../../util/timeout";
+
+//import timeout from "../../util/timeout";
 import animate from "@jam3/gsap-promise";
 
 class Template extends Component {
@@ -18,6 +18,13 @@ class Template extends Component {
 
 
 
+<<<<<<< HEAD
+=======
+    if (currentIndex !== prevState.currentIndex) {
+      this.props.requestNextProject()
+    }
+  }
+>>>>>>> newSingle
 
   show = () => animate.set(this.el, { autoAlpha: 1 });
 
@@ -32,13 +39,27 @@ class Template extends Component {
     );
   }
 
+<<<<<<< HEAD
 
+=======
+  // handleSlideChange() {
+  //   this.setCurrentSlideNavColor();
+
+  //   this.animating = true;
+
+  //   timeout(400).then(() => {
+  //     this.animating = false;
+  //   });
+  // }
+>>>>>>> newSingle
 
   render() {
     return (
-      <section className="template" ref={e => (this.el = e)}>
+      <div className="template" ref={e => (this.el = e)}>
         {this.props.children(this.state)}
-      </section>
+
+
+      </div>
     );
   }
 }

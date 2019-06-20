@@ -1,56 +1,139 @@
-// .slider {
-//   position: relative;
-//   width: 100%;
-//   height: 100%;
-//   overflow: hidden;
-//   @include hidden();
-// }
 
-.single-area {
-  @include center-block();
+
+.container {
+  
   width: 100%;
   height: 100%;
   max-width: 1200px;
   padding: 0 6.25rem;
-  overflow: hidden;
-}
-
-.slider{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  margin: 0 auto;
+  
 
 }
 
-.scroll-area {
-  position: relative;
-  padding-top: 1.875rem;
-  will-change: transform;
-}
 
-.slide {
-  padding: 0 1.875rem;;
+
+
+.template{
+  @include center-block();
+
   margin-top: 3.75rem;
+  padding: 0 6.25rem;
   display: flex;
+  flex-direction: column;
+  //align-items: center;
   
-    flex-direction: column;
+ 
+}
+
+
+
+
+
+.block {
+  //padding: 0 1.875rem;;
+  //margin-top: 3.75rem;
+  //padding-top: 0;
+  //padding-bottom: 1.875rem;
+  //margin: 0 auto;
+
+  &--header {
+    margin-top: 3.25rem;
+    display: flex;
+    justify-content: left;
+    
+    // justify-content: center;
+    // align-items: center;
+
+  }
+
+  &__header {
+    font-size: 2rem;
+     font-weight: bold;
+      //line-height: 1.4;
+    
+    
+  }
+
+  &--text {
+    margin-top: 2.375rem;
+   
+
+  }
+
+  &__text {
+    // @include center-block();
+    // width: 100%;
+    // height: 100%;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // max-width: 900px;
+    
+
+    p {
+      font-size: 1.313rem;
+      line-height: 1.58;
+
+      @media (max-width: 1000px) {
+        font-size: 1.875rem;
+        padding: 0 3.75rem;
+        line-height: 1.4;
+      }
+
+      @media (max-width: 700px) {
+        font-size: 1.375rem;
+        padding: 0 5rem;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      transition: opacity 0.5s $easeOutQuint;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &--image {
+    margin-top: 2.375rem;
+    display: flex;
+    justify-content: center;
     align-items: center;
+
+  }
+  
+  &--next {
+    margin-top: 3.25rem;
+    padding-bottom: 100%;
+    display: flex;
+    
+    
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__next {
+    font-size: 2rem;
+     font-weight: bold;
+  }
+
+  
+    
   
 }
 
-// .slide {
-//   overflow: hidden;
-//   transition: transform 500ms $easeOutQuint;
-//   will-change: transform;
-// }
 
-// .slide {
-//   @include absolute();
-// }
+
+
+
 
 // .block {
 //   height: 100%;
+
+
 
 //   &--image {
 //     background-size: cover;
