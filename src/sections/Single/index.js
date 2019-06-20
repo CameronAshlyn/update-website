@@ -27,11 +27,7 @@ class Single extends BaseComponent {
       .then(this.template.show)
       .then(this.loadAssets)
       .then(overlay.animateOut)
-<<<<<<< HEAD
-
-=======
       .then(this.template.init)
->>>>>>> newSingle
       .then(() => firstView && onFirstView())
       .then(() => {
         typeof this.blocks[0].play === "function" && this.blocks[0].play();
