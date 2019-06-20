@@ -17,14 +17,13 @@ class Template extends Component {
 
 
 
+  componentDidUpdate(prevProps, prevState) {
+    const { currentIndex } = this.state;
 
-<<<<<<< HEAD
-=======
     if (currentIndex !== prevState.currentIndex) {
       this.props.requestNextProject()
     }
   }
->>>>>>> newSingle
 
   show = () => animate.set(this.el, { autoAlpha: 1 });
 
@@ -39,9 +38,6 @@ class Template extends Component {
     );
   }
 
-<<<<<<< HEAD
-
-=======
   // handleSlideChange() {
   //   this.setCurrentSlideNavColor();
 
@@ -51,7 +47,6 @@ class Template extends Component {
   //     this.animating = false;
   //   });
   // }
->>>>>>> newSingle
 
   render() {
     return (
